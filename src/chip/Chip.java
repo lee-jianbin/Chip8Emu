@@ -13,6 +13,7 @@ public class Chip {
 	private int sound_timer;
 	
 	private byte[] keys;
+	
 	private byte[] display;
 	
 	public void init() {
@@ -39,16 +40,16 @@ public class Chip {
 		// decode opcode
 		switch(opcode & 0xF000) {
 		
-		case 0x8000: // Contains more data in last nibble
+		case 0x8000:// Contains more data in last nibble
 			
 			switch(opcode & 0x000F) {
-			
-			case 0x0000: // 8XY0: Sets VX to the value of VY.
+			case 0x0000://8XY0: Sets VX to the value of VY.
 				default:
 					System.err.println("Unsupported Opcode!");
 					System.exit(0);
 					break;
 			}
+			
 			break;
 			
 		default:
@@ -56,5 +57,9 @@ public class Chip {
 			System.exit(0);
 		}
 		// execute opcode
+	}
+	
+	public byte[] getDisplay() {
+		return display;
 	}
 }
